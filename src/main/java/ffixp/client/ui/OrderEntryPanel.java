@@ -59,6 +59,7 @@ public class OrderEntryPanel extends JPanel implements Observer {
     private boolean stopEntered = false;
     private boolean sessionEntered = false;
 
+    private final JTextField securesCodeTextField = new JTextField();
     private final JTextField symbolTextField = new JTextField();
     private final IntegerNumberTextField quantityTextField = new IntegerNumberTextField();
 
@@ -71,11 +72,11 @@ public class OrderEntryPanel extends JPanel implements Observer {
 
     private final JComboBox sessionComboBox = new JComboBox();
 
-    private final JLabel limitPriceLabel = new JLabel("Limit");
-    private final JLabel stopPriceLabel = new JLabel("Stop");
+    private final JLabel limitPriceLabel = new JLabel("限价");
+    private final JLabel stopPriceLabel = new JLabel("撤销");
 
     private final JLabel messageLabel = new JLabel(" ");
-    private final JButton submitButton = new JButton("Submit");
+    private final JButton submitButton = new JButton("提交");
 
     private OrderTableModel orderTableModel = null;
     private transient FFIXPApplication application = null;
@@ -91,7 +92,7 @@ public class OrderEntryPanel extends JPanel implements Observer {
         application.addLogonObserver(this);
 
         SubmitActivator activator = new SubmitActivator();
-        symbolTextField.addKeyListener(activator);
+        securesCodeTextField.addKeyListener(activator);
         quantityTextField.addKeyListener(activator);
         limitPriceTextField.addKeyListener(activator);
         stopPriceTextField.addKeyListener(activator);
@@ -123,20 +124,22 @@ public class OrderEntryPanel extends JPanel implements Observer {
         int x = 0;
         int y = 0;
 
-        add(new JLabel("Symbol"), x, y);
-        add(new JLabel("Quantity"), ++x, y);
-        add(new JLabel("Side"), ++x, y);
-        add(new JLabel("Type"), ++x, y);
+        add(new JLabel("证券代码"), x, y);
+        add(new JLabel("证券名称"), ++x, y);
+        add(new JLabel("数量"), ++x, y);
+        add(new JLabel("买/卖"), ++x, y);
         constraints.ipadx = 30;
         add(limitPriceLabel, ++x, y);
         add(stopPriceLabel, ++x, y);
         constraints.ipadx = 0;
-        add(new JLabel("TIF"), ++x, y);
+        add(new JLabel("类型"), ++x, y);
         constraints.ipadx = 30;
 
-        symbolTextField.setName("SymbolTextField");
-        add(symbolTextField, x = 0, ++y);
+        securesCodeTextField.setName("SymbolTextField");
+        add(securesCodeTextField, x = 0, ++y);
         constraints.ipadx = 0;
+        symbolTextField.setName("symbolTextField");
+        add(symbolTextField, ++x, y);
         quantityTextField.setName("QuantityTextField");
         add(quantityTextField, ++x, y);
         sideComboBox.setName("SideComboBox");
@@ -147,8 +150,7 @@ public class OrderEntryPanel extends JPanel implements Observer {
         add(limitPriceTextField, ++x, y);
         stopPriceTextField.setName("StopPriceTextField");
         add(stopPriceTextField, ++x, y);
-        tifComboBox.setName("TifComboBox");
-        add(tifComboBox, ++x, y);
+        
 
         constraints.insets = new Insets(3, 0, 0, 0);
         constraints.gridwidth = GridBagConstraints.RELATIVE;
@@ -245,7 +247,7 @@ public class OrderEntryPanel extends JPanel implements Observer {
             order.setType((OrderType) typeComboBox.getSelectedItem());
             order.setTIF((OrderTIF) tifComboBox.getSelectedItem());
 
-            order.setSymbol(symbolTextField.getText());
+            order.setSymbol(securesCodeTextField.getText());
             order.setQuantity(Integer.parseInt(quantityTextField.getText()));
             order.setOpen(order.getQuantity());
 
@@ -264,7 +266,7 @@ public class OrderEntryPanel extends JPanel implements Observer {
     private class SubmitActivator implements KeyListener, ItemListener {
         public void keyReleased(KeyEvent e) {
             Object obj = e.getSource();
-            if (obj == symbolTextField) {
+            if (obj == securesCodeTextField) {
                 symbolEntered = testField(obj);
             } else if (obj == quantityTextField) {
                 quantityEntered = testField(obj);

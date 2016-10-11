@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class OrderSide {
     static private final Map<String, OrderSide> known = new HashMap<String, OrderSide>();
-    static public final OrderSide BUY = new OrderSide("Buy");
-    static public final OrderSide SELL = new OrderSide("Sell");
+    static public final OrderSide BUY = new OrderSide("ÂòÈë");
+    static public final OrderSide SELL = new OrderSide("Âô³ö");
     static public final OrderSide SHORT_SELL = new OrderSide("Short Sell");
     static public final OrderSide SHORT_SELL_EXEMPT = new OrderSide("Short Sell Exempt");
     static public final OrderSide CROSS = new OrderSide("Cross");
@@ -33,8 +33,9 @@ public class OrderSide {
     static public final OrderSide CROSS_SHORT_EXEMPT = new OrderSide("Cross Short Exempt");
 
     static private final OrderSide[] array = {
-            BUY, SELL, SHORT_SELL, SHORT_SELL_EXEMPT,
-            CROSS, CROSS_SHORT, CROSS_SHORT_EXEMPT
+            BUY, SELL
+//            , SHORT_SELL, SHORT_SELL_EXEMPT,
+//            CROSS, CROSS_SHORT, CROSS_SHORT_EXEMPT
     };
 
     private final String name;

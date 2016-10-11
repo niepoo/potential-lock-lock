@@ -74,6 +74,7 @@ import quickfix.field.TransactTime;
 
 public class FFIXPApplication implements Application {
     private final DefaultMessageFactory messageFactory = new DefaultMessageFactory();
+    private RealQuotesTableModel realQuotesTableModel =null;
     private OrderTableModel orderTableModel = null;
     private ExecutionTableModel executionTableModel = null;
     private final ObservableOrder observableOrder = new ObservableOrder();
@@ -86,8 +87,9 @@ public class FFIXPApplication implements Application {
     static private final TwoWayMap tifMap = new TwoWayMap();
     static private final HashMap<SessionID, HashSet<ExecID>> execIDs = new HashMap<SessionID, HashSet<ExecID>>();
 
-    public FFIXPApplication(OrderTableModel orderTableModel,
+    public FFIXPApplication(RealQuotesTableModel realQuotesTableModel,OrderTableModel orderTableModel,
             ExecutionTableModel executionTableModel) {
+    	this.realQuotesTableModel = realQuotesTableModel;
         this.orderTableModel = orderTableModel;
         this.executionTableModel = executionTableModel;
     }

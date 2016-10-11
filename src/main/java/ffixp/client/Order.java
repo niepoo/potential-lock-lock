@@ -40,6 +40,18 @@ public class Order implements Cloneable {
     private String ID = null;
     private String originalID = null;
     private static int nextID = 1;
+    
+    private String wtRq;
+    private String securesCode;
+    private String securesName;
+    private Double wtPrice;
+    private int wtNum;
+    private Double djJe;
+    private int cjNum;
+    private Double cjJe;
+    private int cdNum;
+    private String target;
+    private String wtZt;
 
     public Order() {
         ID = generateID();
@@ -214,4 +226,100 @@ public class Order implements Cloneable {
     public String getOriginalID() {
         return originalID;
     }
+
+	public OrderTIF getTif() {
+		return tif;
+	}
+
+	public void setTif(OrderTIF tif) {
+		this.tif = tif;
+	}
+
+	public String getWtRq() {
+		return wtRq;
+	}
+
+	public void setWtRq(String wtRq) {
+		this.wtRq = wtRq;
+	}
+
+	public String getSecuresCode() {
+		return securesCode;
+	}
+
+	public void setSecuresCode(String securesCode) {
+		this.securesCode = securesCode;
+	}
+
+	public String getSecuresName() {
+		return securesName;
+	}
+
+	public void setSecuresName(String securesName) {
+		this.securesName = securesName;
+	}
+
+	public Double getWtPrice() {
+		return wtPrice;
+	}
+
+	public void setWtPrice(Double wtPrice) {
+		this.wtPrice = wtPrice;
+	}
+
+	public int getWtNum() {
+		return wtNum;
+	}
+
+	public void setWtNum(int wtNum) {
+		this.wtNum = wtNum;
+	}
+
+	public Double getDjJe() {
+		return djJe;
+	}
+
+	public void setDjJe(Double djJe) {
+		this.djJe = djJe;
+	}
+
+	public int getCjNum() {
+		return cjNum;
+	}
+
+	public void setCjNum(int cjNum) {
+		this.cjNum = cjNum;
+	}
+
+	public Double getCjJe() {
+		return cjJe;
+	}
+
+	public void setCjJe(Double cjJe) {
+		this.cjJe = cjJe;
+	}
+
+	public int getCdNum() {
+		return cdNum;
+	}
+
+	public void setCdNum(int cdNum) {
+		this.cdNum = cdNum;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	public String getWtZt() {
+		return wtZt;
+	}
+
+	public void setWtZt(String wtZt) {
+		this.wtZt = wtZt;
+	}
 }

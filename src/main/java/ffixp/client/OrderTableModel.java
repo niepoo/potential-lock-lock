@@ -25,16 +25,18 @@ import javax.swing.table.AbstractTableModel;
 
 public class OrderTableModel extends AbstractTableModel {
 
-    private final static int SYMBOL = 0;
-    private final static int QUANTITY = 1;
-    private final static int OPEN = 2;
-    private final static int EXECUTED = 3;
-    private final static int SIDE = 4;
-    private final static int TYPE = 5;
-    private final static int LIMITPRICE = 6;
-    private final static int STOPPRICE = 7;
-    private final static int AVGPX = 8;
-    private final static int TARGET = 9;
+    private final static int wtRq = 0;
+    private final static int side = 1;
+    private final static int securesCode = 2;
+    private final static int securesName = 3;
+    private final static int wtPrice = 4;
+    private final static int wtNum = 5;
+    private final static int djJe = 6;
+    private final static int cjNum = 7;
+    private final static int cjJe = 8;
+    private final static int cdNum = 9;
+    private final static int target = 10;
+    private final static int wtZt = 11;
 
     private final HashMap<Integer, Order> rowToOrder;
     private final HashMap<String, Integer> idToRow;
@@ -48,9 +50,8 @@ public class OrderTableModel extends AbstractTableModel {
         idToOrder = new HashMap<String, Order>();
 
         headers = new String[]
-                  {"Symbol", "Quantity", "Open", "Executed",
-                   "Side", "Type", "Limit", "Stop", "AvgPx",
-                   "Target"};
+                  {"委托日期","买/卖","证券代码", "证券名称", "委托价钱","委托数量", "冻结金额","成交数量", 
+                   "成交金额", "撤单数量", "服务器","委托状态"};
     }
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -128,25 +129,27 @@ public class OrderTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Order order = rowToOrder.get(rowIndex);
         switch (columnIndex) {
-        case SYMBOL:
+        case wtRq:
             return order.getSymbol();
-        case QUANTITY:
+        case side:
             return order.getQuantity();
-        case OPEN:
+        case securesCode:
             return order.getOpen();
-        case EXECUTED:
+        case securesName:
             return order.getExecuted();
-        case SIDE:
+        case wtPrice:
             return order.getSide();
-        case TYPE:
+        case wtNum:
             return order.getType();
-        case LIMITPRICE:
+        case djJe:
             return order.getLimit();
-        case STOPPRICE:
+        case cjJe:
             return order.getStop();
-        case AVGPX:
+        case cdNum:
             return order.getAvgPx();
-        case TARGET:
+        case target:
+            return order.getSessionID().getTargetCompID();
+        case wtZt:
             return order.getSessionID().getTargetCompID();
         }
         return "";

@@ -38,6 +38,7 @@ import ffixp.client.FFIXPApplication;
 import ffixp.client.ExecutionTableModel;
 import ffixp.client.Order;
 import ffixp.client.OrderTableModel;
+import ffixp.client.RealQuotesTableModel;
 
 /**
  * Main content panel
@@ -49,7 +50,8 @@ public class FFIXPPanel extends JPanel implements Observer, ActionListener {
     private final CancelReplacePanel cancelReplacePanel;
     private final OrderTableModel orderTableModel;
 
-    public FFIXPPanel(OrderTableModel orderTableModel,
+    public FFIXPPanel(RealQuotesTableModel realQuotesTableModel,
+    		    OrderTableModel orderTableModel,
                 ExecutionTableModel executionTableModel,
                 FFIXPApplication application) {
         setName("BanzaiPanel");
@@ -69,11 +71,13 @@ public class FFIXPPanel extends JPanel implements Observer, ActionListener {
         constraints.weighty = 10;
 
         JTabbedPane tabbedPane = new JTabbedPane();
+        RealQuotesPanel realQuotesPanel = new RealQuotesPanel(realQuotesTableModel);
         orderPanel = new OrderPanel(orderTableModel, application);
         ExecutionPanel executionPanel = new ExecutionPanel(executionTableModel);
 
-        tabbedPane.add("Orders", orderPanel);
-        tabbedPane.add("Executions", executionPanel);
+        tabbedPane.add("证券实时行情", realQuotesPanel);
+        tabbedPane.add("历史委托订单", orderPanel);
+        tabbedPane.add("历史成交订单", executionPanel);
         add(tabbedPane, constraints);
 
         cancelReplacePanel = new CancelReplacePanel(application);

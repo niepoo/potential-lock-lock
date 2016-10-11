@@ -70,10 +70,10 @@ public class FFIXPClient {
         inputStream.close();
 
         boolean logHeartbeats = Boolean.valueOf(System.getProperty("logHeartbeats", "true"));
-
+        RealQuotesTableModel realQuotesTableModel = new RealQuotesTableModel();
         OrderTableModel orderTableModel = new OrderTableModel();
         ExecutionTableModel executionTableModel = new ExecutionTableModel();
-        FFIXPApplication application = new FFIXPApplication(orderTableModel, executionTableModel);
+        FFIXPApplication application = new FFIXPApplication(realQuotesTableModel,orderTableModel, executionTableModel);
         MessageStoreFactory messageStoreFactory = new FileStoreFactory(settings);
         LogFactory logFactory = new ScreenLogFactory(true, true, true, logHeartbeats);
         MessageFactory messageFactory = new DefaultMessageFactory();
@@ -84,7 +84,7 @@ public class FFIXPClient {
         JmxExporter exporter = new JmxExporter();
         exporter.register(initiator);
 
-        frame = new FFIXPFrame(orderTableModel, executionTableModel, application);
+        frame = new FFIXPFrame(realQuotesTableModel,orderTableModel, executionTableModel, application);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

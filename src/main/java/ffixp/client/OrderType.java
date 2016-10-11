@@ -24,10 +24,10 @@ import java.util.Map;
 
 public class OrderType {
     static private final Map<String, OrderType> known = new HashMap<String, OrderType>();
-    static public final OrderType MARKET = new OrderType("Market");
-    static public final OrderType LIMIT = new OrderType("Limit");
-    static public final OrderType STOP = new OrderType("Stop");
-    static public final OrderType STOP_LIMIT = new OrderType("Stop Limit");
+    static public final OrderType MARKET = new OrderType("市价");
+    static public final OrderType LIMIT = new OrderType("限价");
+    static public final OrderType STOP = new OrderType("市价撤销");
+    static public final OrderType STOP_LIMIT = new OrderType("限价撤销");
     private final String name;
 
     static private final OrderType[] array = { MARKET, LIMIT, STOP, STOP_LIMIT };

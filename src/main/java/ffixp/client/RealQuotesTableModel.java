@@ -23,14 +23,17 @@ import java.util.HashMap;
 
 import javax.swing.table.AbstractTableModel;
 
-public class ExecutionTableModel extends AbstractTableModel {
+public class RealQuotesTableModel extends AbstractTableModel {
 
     private final static int securesCode = 0;
-    private final static int SYMBOL = 1;
-    private final static int QUANTITY = 2;
-    private final static int SIDE = 3;
-    private final static int PRICE = 4;
-
+    private final static int securesName = 1;
+    private final static int zf = 2;
+    private final static int xj = 3;
+    private final static int jk = 4;
+    private final static int zg = 5;
+    private final static int zd = 6;
+    private final static int zs = 7;
+    private final static int zje = 8;
     private final HashMap<Integer, Execution> rowToExecution;
     private final HashMap<String, Integer> idToRow;
     private final HashMap<String, Execution> idToExecution;
@@ -38,13 +41,13 @@ public class ExecutionTableModel extends AbstractTableModel {
 
     private final String[] headers;
 
-    public ExecutionTableModel() {
+    public RealQuotesTableModel() {
         rowToExecution = new HashMap<Integer, Execution>();
         idToRow = new HashMap<String, Integer>();
         idToExecution = new HashMap<String, Execution>();
         exchangeIdToExecution = new HashMap<String, Execution>();
 
-        headers = new String[] {"证券代码","证券名称", "数量", "买/卖", "价钱"};
+        headers = new String[] {"证券代码","证券名称","涨幅","现价","今开","最高","最底","昨收","总金额" };
     }
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,18 +96,25 @@ public class ExecutionTableModel extends AbstractTableModel {
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         Execution execution = rowToExecution.get(rowIndex);
-
         switch (columnIndex) {
         case securesCode:
-        	return execution.getSecuresCode();
-        case SYMBOL:
-            return execution.getSymbol();
-        case QUANTITY:
-            return execution.getQuantity();
-        case SIDE:
-            return execution.getSide();
-        case PRICE:
-            return execution.getPrice();
+            return execution.getSecuresCode();
+        case securesName:
+            return execution.getSecuresName();
+        case zf:
+            return execution.getZf();
+        case xj:
+            return execution.getXj();
+        case jk:
+            return execution.getJk();
+        case zg:
+            return execution.getZg();
+        case zd:
+            return execution.getZd();
+        case zs:
+            return execution.getZs();
+        case zje:
+            return execution.getZje();
         }
         return "";
     }

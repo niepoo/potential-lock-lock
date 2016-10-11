@@ -33,22 +33,23 @@ import ffixp.client.FFIXPClient;
 import ffixp.client.FFIXPApplication;
 import ffixp.client.ExecutionTableModel;
 import ffixp.client.OrderTableModel;
+import ffixp.client.RealQuotesTableModel;
 
 /**
  * Main application window
  */
 public class FFIXPFrame extends JFrame {
 
-    public FFIXPFrame(OrderTableModel orderTableModel, ExecutionTableModel executionTableModel,
+    public FFIXPFrame(RealQuotesTableModel realQuotesTableModel,OrderTableModel orderTableModel, ExecutionTableModel executionTableModel,
             final FFIXPApplication application) {
         super();
-        setTitle("Banzai!");
-        setSize(600, 400);
+        setTitle("金融行情和交易服务模拟简易客户端");
+        setSize(1200, 800);
 
         if (System.getProperties().containsKey("openfix")) {
             createMenuBar(application);
         }
-        getContentPane().add(new FFIXPPanel(orderTableModel, executionTableModel, application),
+        getContentPane().add(new FFIXPPanel(realQuotesTableModel,orderTableModel, executionTableModel, application),
                 BorderLayout.CENTER);
         setVisible(true);
     }

@@ -27,6 +27,16 @@ public class Execution {
     private String ID = null;
     private String exchangeID = null;
     private static int nextID = 1;
+    
+    private String securesCode;
+    private String securesName ;
+    private double zf;
+    private double xj;
+    private double jk;
+    private double zg;
+    private double zd;
+    private double zs;
+    private double zje;
 
     public Execution() {
         ID = Integer.toString(nextID++);
@@ -79,4 +89,76 @@ public class Execution {
     public String getExchangeID() {
         return exchangeID;
     }
+
+	public String getSecuresCode() {
+		return securesCode;
+	}
+
+	public void setSecuresCode(String securesCode) {
+		this.securesCode = securesCode;
+	}
+
+	public String getSecuresName() {
+		return securesName;
+	}
+
+	public void setSecuresName(String securesName) {
+		this.securesName = securesName;
+	}
+
+	public double getZf() {
+		return zf;
+	}
+
+	public void setZf(double zf) {
+		this.zf = zf;
+	}
+
+	public double getXj() {
+		return xj;
+	}
+
+	public void setXj(double xj) {
+		this.xj = xj;
+	}
+
+	public double getJk() {
+		return jk;
+	}
+
+	public void setJk(double jk) {
+		this.jk = jk;
+	}
+
+	public double getZg() {
+		return zg;
+	}
+
+	public void setZg(double zg) {
+		this.zg = zg;
+	}
+
+	public double getZd() {
+		return zd;
+	}
+
+	public void setZd(double zd) {
+		this.zd = zd;
+	}
+
+	public double getZs() {
+		return zs;
+	}
+
+	public void setZs(double zs) {
+		this.zs = zs;
+	}
+
+	public double getZje() {
+		return zje;
+	}
+
+	public void setZje(double zje) {
+		this.zje = zje;
+	}
 }
